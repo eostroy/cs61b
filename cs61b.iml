@@ -3,9 +3,22 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/lab01/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/lab01/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/proj0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/proj0/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/lab02/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cs61b-fa24/lab02/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/hw0b/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/hw0b/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/lab02/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/lab02/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/proj0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fa24/proj0/tests" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="library-fa24" level="project" />
   </component>
 </module>
