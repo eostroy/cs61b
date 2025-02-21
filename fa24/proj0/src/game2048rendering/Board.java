@@ -12,6 +12,7 @@ public class Board {
     /** Side that the board currently views as north. */
     private Side _viewPerspective;
 
+    // 实例化表格
     public Board(int size) {
         _values = new Tile[size][size];
         _viewPerspective = Side.NORTH;
@@ -24,6 +25,7 @@ public class Board {
 
     /** Create a board where RAWVALUES hold the values of the tiles on the board 
      * (0 is null) with a current score of SCORE and the viewing perspective set to north. */
+    // 存储数值
     public Board(int[][] rawValues) {
         int size = rawValues.length;
         _values = new Tile[size][size];
