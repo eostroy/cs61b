@@ -202,6 +202,10 @@ public class Model {
 
         if (count != 0) {
             board.move(x, targetY, currTile);
+        } else {
+            if (y+1 < board.size() && board.tile(x, y+1).value() == myValue) {
+                board.move(x,y+1,currTile);
+            }
         }
     }
 
