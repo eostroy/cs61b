@@ -203,16 +203,6 @@ public class Model {
         if (count != 0) {
             board.move(x, targetY, currTile);
         }
-        // 完成移动（不合并），接下来应该调用currTile
-
-        if (targetY != board.size()-1) {
-            int valueUp = board.tile(x, y+count+1).value();
-            if (valueUp == myValue) {
-                if (!currTile.wasMerged()) {
-                    valueUp = 2 * valueUp;
-                }
-            }
-        }
     }
 
     /** Handles the movements of the tilt in column x of board B
