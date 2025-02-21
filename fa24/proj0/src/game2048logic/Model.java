@@ -189,6 +189,18 @@ public class Model {
         int targetY = y;
 
         // TODO: Tasks 5, 6, and 10. Fill in this function.
+
+        int count = 0;  // 空格子数
+        if (board.tile(x, y) != null) {
+            for (int i = y + 1; i < board.size(); i++) {
+                if (board.tile(x, i) == null) {
+                    count += 1;
+                }
+            }
+        }
+        if (count != 0) {
+            board.move(x, y+count, currTile);
+        }
     }
 
     /** Handles the movements of the tilt in column x of board B
