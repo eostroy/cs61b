@@ -125,6 +125,47 @@ public class Model {
      */
     public boolean atLeastOneMoveExists() {
         // TODO: Task 3. Fill in this function.
+
+        if (emptySpaceExists()) {
+            return true;
+        }
+
+        // 遍历除四个角落外的情形
+        for (int x = 1; x < board.size()-1; x++) {
+            for (int y = 1; y < board.size()-1; y++) {
+                if (board.tile(x, y) != null) {
+                    int value = board.tile(x, y).value();
+                    int valueLeft = board.tile(x-1, y).value();
+                    int valueRight = board.tile(x+1, y).value();
+                    int valueUp = board.tile(x, y+1).value();
+                    int valueDown = board.tile(x, y-1).value();
+                    if (value == valueLeft || value == valueRight || value == valueUp || value == valueDown) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        // 左下角
+        if (board.tile(0,0).value() == board.tile(0,1).value() || board.tile(0,0).value() == board.tile(1,0).value()) {
+            return true;
+        }
+
+        // 左上角
+        if (board.tile(0,board.size()-1).value() == board.tile(0, board.size()-2).value() || board.tile(0, board.size()-1).value() == board.tile(1, board.size()-1).value()) {
+            return true;
+        }
+
+        // 右上角
+        if (board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-1, board.size()-2).value() || board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-2, board.size()-1).value()) {
+            return true;
+        }
+
+        // 右下角
+        if (board.tile(board.size()-1, 0).value() == board.tile(board.size()-2, 0).value() || board.tile(board.size()-1, 0).value() == board.tile(board.size()-1, 1).value()) {
+            return true;
+        }
+
         return false;
     }
 
