@@ -200,13 +200,31 @@ public class Model {
         }
         targetY = y + count;    // 目标位置
 
-        if (count != 0) {
+        if (count == 0) {
+            if (y+1 < board.size() && board.tile(x, y+1).value() == myValue && y < board.size()-1 && !board.tile(x, y+1).wasMerged()) {
+                board.move(x, y+1, currTile);
+            }
+        } else {
+            int nullCount = 0;
+            for (int i = y+1; i <= targetY; i++) {
+                if (board.tile(x, i) == null) {
+                    nullCount += 1;
+                }
+            }
+            if (targetY+1 < board.size() && myValue == board.tile(x, targetY+1).value() && count == nullCount && !board.tile(x, targetY + 1).wasMerged()) {
+                board.move(x, targetY+1, currTile);
+            } else {
+                board.move(x, targetY, currTile);
+            }
+        }
+
+        /* if (count != 0) {
             board.move(x, targetY, currTile);
         } else {
             if (y+1 < board.size() && board.tile(x, y+1).value() == myValue) {
                 board.move(x,y+1,currTile);
             }
-        }
+        } */
     }
 
     /** Handles the movements of the tilt in column x of board B
