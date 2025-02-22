@@ -130,6 +130,10 @@ public class Model {
             return true;
         }
 
+        if (board.size() == 1) {
+            return false;
+        }
+
         // 遍历除四个角落外的情形
         for (int x = 1; x < board.size()-1; x++) {
             for (int y = 1; y < board.size()-1; y++) {
@@ -147,22 +151,22 @@ public class Model {
         }
 
         // 左下角
-        if (board.tile(0,0).value() == board.tile(0,1).value() || board.tile(0,0).value() == board.tile(1,0).value()) {
+        if (board.size() > 1 && board.tile(0,0).value() == board.tile(0,1).value() || board.tile(0,0).value() == board.tile(1,0).value()) {
             return true;
         }
 
         // 左上角
-        if (board.tile(0,board.size()-1).value() == board.tile(0, board.size()-2).value() || board.tile(0, board.size()-1).value() == board.tile(1, board.size()-1).value()) {
+        if (board.size() > 1 && board.tile(0,board.size()-1).value() == board.tile(0, board.size()-2).value() || board.tile(0, board.size()-1).value() == board.tile(1, board.size()-1).value()) {
             return true;
         }
 
         // 右上角
-        if (board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-1, board.size()-2).value() || board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-2, board.size()-1).value()) {
+        if (board.size() > 1 && board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-1, board.size()-2).value() || board.tile(board.size()-1, board.size()-1).value() == board.tile(board.size()-2, board.size()-1).value()) {
             return true;
         }
 
         // 右下角
-        if (board.tile(board.size()-1, 0).value() == board.tile(board.size()-2, 0).value() || board.tile(board.size()-1, 0).value() == board.tile(board.size()-1, 1).value()) {
+        if (board.size() > 1 && board.tile(board.size()-1, 0).value() == board.tile(board.size()-2, 0).value() || board.tile(board.size()-1, 0).value() == board.tile(board.size()-1, 1).value()) {
             return true;
         }
 
@@ -203,6 +207,7 @@ public class Model {
         if (count == 0) {
             if (y+1 < board.size() && board.tile(x, y+1).value() == myValue && y < board.size()-1 && !board.tile(x, y+1).wasMerged()) {
                 board.move(x, y+1, currTile);
+                score += 2*myValue;
             }
         } else {
             int nullCount = 0;
@@ -213,6 +218,7 @@ public class Model {
             }
             if (targetY+1 < board.size() && myValue == board.tile(x, targetY+1).value() && count == nullCount && !board.tile(x, targetY + 1).wasMerged()) {
                 board.move(x, targetY+1, currTile);
+                score += 2*myValue;
             } else {
                 board.move(x, targetY, currTile);
             }
@@ -243,9 +249,11 @@ public class Model {
 
     public void tilt(Side side) {
         // TODO: Tasks 8 and 9. Fill in this function.
+        board.setViewingPerspective(side);
         for (int i = 0; i < board.size(); i++) {
             tiltColumn(i);
         }
+        board.setViewingPerspective(Side.NORTH);
     }
 
     /** Tilts every column of the board toward SIDE.
