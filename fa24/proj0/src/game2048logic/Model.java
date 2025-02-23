@@ -134,7 +134,7 @@ public class Model {
             return false;
         }
 
-        // 遍历除四个角落外的情形
+        // 遍历除四个角落和四条边以外的情形
         for (int x = 1; x < board.size()-1; x++) {
             for (int y = 1; y < board.size()-1; y++) {
                 if (board.tile(x, y) != null) {
@@ -168,6 +168,19 @@ public class Model {
         // 右下角
         if (board.size() > 1 && board.tile(board.size()-1, 0).value() == board.tile(board.size()-2, 0).value() || board.tile(board.size()-1, 0).value() == board.tile(board.size()-1, 1).value()) {
             return true;
+        }
+
+        // 四条边
+        for (int x = 0; x < board.size()-1; x++) {
+            if (board.tile(x, 0).value() == board.tile(x+1, 0).value() || board.tile(x, board.size()-1).value() == board.tile(x+1, board.size()-1).value()) {
+                return true;
+            }
+        }
+
+        for (int y = 0; y < board.size()-1; y++) {
+            if (board.tile(0, y).value() == board.tile(0, y+1).value() || board.tile(board.size()-1, y).value() == board.tile(board.size()-1, y+1).value()) {
+                return true;
+            }
         }
 
         return false;
