@@ -215,7 +215,7 @@ public class Model {
                 }
             }
         }
-        targetY = y + count;    // 目标位置
+        targetY = y + count;
 
         if (count == 0) {
             if (y+1 < board.size() && board.tile(x, y+1).value() == myValue && y < board.size()-1 && !board.tile(x, y+1).wasMerged()) {
