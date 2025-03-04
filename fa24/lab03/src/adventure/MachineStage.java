@@ -78,17 +78,16 @@ public class MachineStage implements AdventureStage {
     }
 
     public static int mysteryMax(int a, int b) {
-        /* int w = (b - a) >> 31;
+        /*int w = (b - a) >> 31;
         int z = ~(b - a) >> 31;
 
         int max = b & w | a & z;
         return max;*/
         return Math.max(a, b);
-
     }
 
     public static int mysteryAdd(int a, int b) {
-        /*int x = a, y = b;
+        int x = a, y = b;
         int xor, and, temp;
         and = x & y;
         xor = x ^ y;
@@ -99,8 +98,7 @@ public class MachineStage implements AdventureStage {
             and &= xor;
             xor = temp;
         }
-        return xor;*/
-        return a+b;
+        return xor;
     }
 
     /**
